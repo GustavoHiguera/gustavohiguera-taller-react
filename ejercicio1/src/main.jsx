@@ -1,40 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
-const Content = ({parts, exercises}) => (
-  <ul>
-    {parts.map((part, index) => (
-      <li>{part} {exercises[index]}</li>
-    ))}
-  </ul>
-)
-
-const Header = ({course}) => {
-  return (
-    <div>
-      <h1>{course}</h1>
-    </div>
-
-  )
-}
-
-
-const Total = ({exercises}) => {
-  let TotalEx=0;
-  {exercises.map(exercise => (
-    TotalEx += exercise
-  ))}
-  return(
-    <div>
-      <p>Total exercises {TotalEx}</p>
-    </div>
-  )
-}
+import Header from './components/Header'
+import Content from './components/Content'
+import Total from './components/Total'
 
 const App = () => {
   const course = 'Half Stack application development'
 
-  const parts = [
+  const courseInfo= [
+    {key: 'fundamentals', part: 'Fundamentals of React', exercises: 10},
+    {key: 'props', part: 'Using props to pass data', exercises: 7},
+    {key: 'state', part: 'State of a component', exercises: 14},
+    {key: 'fetch', part: 'Fetching resources from an A', exercises: 9}
+  ]
+  
+  //Mi intento de resolverlo
+/*   const parts = [
     'Fundamentals of React',
     'Using props to pass data',
     'State of a component',
@@ -44,7 +25,9 @@ const App = () => {
     10,
     7,
     14,
-  ]
+  ] */
+
+  //El ejercicio original
 /*   const part1= 'Fundamentals of React'
   const exercises1= 10
   const part2= 'Using props to pass data'
@@ -73,8 +56,8 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content parts={parts} exercises={exercises} />
-      <Total exercises={exercises} />
+      <Content courseInfo={courseInfo}/>
+      <Total courseInfo={courseInfo} />
     </div>
   )
 }
